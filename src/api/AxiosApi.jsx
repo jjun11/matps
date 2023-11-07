@@ -16,19 +16,21 @@ const AxiosApi = {
   },
 
   // 회원 가입
-  memberReg: async (id, pwd, name, mail) => {
+  memberReg: async (id, pwd, name, nick, mail) => {
     const member = {
       id: id,
       pwd: pwd,
       name: name,
+      nick: nick,
       mail: mail,
     };
     return await axios.post(KH_DOMAIN + "/users/new", member);
   },
   // 회원 가입 여부 확인
-  memberRegCheck: async (id) => {
+  memberRegCheck: async (id, nick) => {
     const check = {
       id: id,
+      nick: nick,
     };
     return await axios.post(KH_DOMAIN + "/users/check", check);
   },

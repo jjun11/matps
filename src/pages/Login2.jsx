@@ -85,7 +85,7 @@ const Login2 = (page) => {
     <>
       <Container>
         <Items className="logoCl">
-          <img src={matpsSymbol} alt="Logo" style={{ width: "300px" }} />{" "}
+          <img src={matpsSymbol} alt="Logo" style={{ width: "18.75rem" }} />{" "}
           {/* 로고 이미지 표시 */}
         </Items>
         <Items className="inputField">

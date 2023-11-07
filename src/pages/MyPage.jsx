@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Container, Items } from "../component/MyPageComponent";
+import Settings from "../images/settings.png";
+
 
  //닉네임
  
@@ -49,9 +51,18 @@ return (
             <div>약관 및 정책</div>
             <div>현재 버전</div>
             </Items>
+            <Items className="foot">
+                <div className="setting">
+                    <img src={Settings} alt="Logo" style={{ width: "2.25rem" }} />
+
+                </div>
+                <div className="logout">
+                    로그아웃
+                </div>
+            </Items>
         </Container>
     </>
-);
+); 
 };
 
 export default MyPage;

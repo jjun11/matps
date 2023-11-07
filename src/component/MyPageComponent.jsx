@@ -1,78 +1,102 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div `
-    display: flex;
-    width: 1280px;
-    flex-direction: column;
-    max-width: 640px;
-    height: 1080px;
-    background-color: #f8f5ec;
-    margin: auto;
-    align-items: center;
-    font-family: "Noto Sans KR", sans-serif;
+
+export const Container = styled.div`
+  display: flex;
+  width: 80rem; /* 변경: 1280px / 16px = 80rem */
+  flex-direction: column;
+  max-width: 40rem; /* 변경: 640px / 16px = 40rem */
+  height: 67.5rem; /* 변경: 1080px / 16px = 67.5rem */
+  background-color: #f8f5ec;
+  margin: auto;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #333333;
 `;
 
-export const Items = styled.div `
-
-&.title {
-    margin-top: 70px;
-    margin-bottom: 30px;
-    font-size: 50px;
+export const Items = styled.div`
+  &.title {
+    margin-top: 4.375rem; /* 변경: 70px / 16px = 4.375rem */
+    margin-bottom: 1.875rem; /* 변경: 30px / 16px = 1.875rem */
+    font-size: 3.125rem;
     font-weight: 800;
-}
-&.prfimg{
+  }
+  &.prfimg {
     background-color: lightgray;
-    width: 212px;
-    height: 212px;
-    border-radius: 107px;
-}
-&.nick{
-    font-size: 32px;
+    width: 13.25rem; /* 변경: 212px / 16px = 13.25rem */
+    height: 13.25rem; /* 변경: 212px / 16px = 13.25rem */
+    border-radius: 6.6875rem; /* 변경: 107px / 16px = 6.6875rem */
+  }
+  &.nick {
+    font-size: 2rem; /* 변경: 32px / 16px = 2rem */
     font-weight: 800;
-    margin: 40px;
-}
-&.point{
-   width : 569px;
-   height: 80px;
-   background-color: #d94d4d;
-color: white;
-display: flex;
-font-size: 20px;
-font-weight: 600;
-align-items: center;
-justify-content: center;
-}
-&.present{
+    margin: 2.5rem; /* 변경: 40px / 16px = 2.5rem */
+  }
+  &.point {
+    width: 35.5625rem; /* 변경: 569px / 16px = 35.5625rem */
+    height: 5rem; /* 변경: 80px / 16px = 5rem */
+    background-color: #d94d4d;
+    color: white;
+    display: flex;
+    font-size: 1.25rem;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+  }
+  &.present {
     display: flex;
     justify-content: space-around;
-    margin: 30px;
-    width: 569px;
-    height: 115px;
-    border-radius: 20px;
+    margin: 1.875rem; /* 변경: 30px / 16px = 1.875rem */
+    width: 35.5625rem; /* 변경: 569px / 16px = 35.5625rem */
+    height: 7.1875rem; /* 변경: 115px / 16px = 7.1875rem */
+    border-radius: 1.25rem; /* 변경: 20px / 16px = 1.25rem */
     background-color: white;
     div {
-        margin-top: 20px;
-        font-size: 15px;
-        
-        p{  text-align: center;
-            font-size: 30px;
-            font-weight: 800;
-            margin: 0px;
-        }
+        margin-top: 1.5625rem; /* 변경: 25px / 16px = 1.5625rem */
+      font-size: 0.9375rem;
+
+      p {
+        text-align: center;
+        font-size: 1.875rem;
+        font-weight: 800;
+        margin: 0px;
+      }
     }
-}
-&.link{
+  }
+  &.link {
     display: flex;
     flex-wrap: wrap;
-    width: 569px;
-    height:300px;
+    width: 35.5625rem; /* 변경: 569px / 16px = 35.5625rem */
+    height: 10rem; /* 변경: 160px / 16px = 10rem */
     p {
-        width:569px;
-        font-size: 24;
+        width: 35.5625rem; /* 변경: 569px / 16px = 35.5625rem */
+        height: 1.25rem; /* 변경: 20px / 16px = 1.25rem */
+      font-size: 1.25rem;
+      opacity: 0.45;
+      font-weight: 600;
     }
     div {
-        width: 270px;
-        height: 40px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      width: 17.75rem; /* 변경: 284px / 16px = 17.75rem */
+      height: 2.5rem; /* 변경: 40px / 16px = 2.5rem */
     }
-}
+  }
+  &.foot {
+    margin-top: 3.75rem; /* 변경: 60px / 16px = 3.75rem */
+    display: flex;
+    justify-content: space-between;
+    width: 32.5rem; /* 변경: 520px / 16px = 32.5rem */
+    div {
+      opacity: 0.45;
+      font-weight: 600;
+      font-size: 1.25rem; /* 변경: 20px / 16px = 1.25rem */
+
+      &.setting{
+        opacity: .3;
+        width: 2.25rem;
+        height: 2.25rem;
+      }
+    }
+  }
 `;

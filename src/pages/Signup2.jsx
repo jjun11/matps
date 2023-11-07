@@ -135,7 +135,7 @@ const Signup2 = () => {
         <Items className="sign">회원가입</Items>
         <hr style={{ width: "100%" }} />
         <Items className="logo">
-          <img src={matpslogo} alt="Logo" style={{ width: "120px" }} />{" "}
+          <img src={matpslogo} alt="Logo" style={{ width: "7.5rem" }} />{" "}
           {/* 로고 이미지 표시 */}
         </Items>
         <Items className="item2">

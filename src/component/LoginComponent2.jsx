@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap; // 너비 넘어가면 줄바꿈
   flex-direction: column; // 요소 정렬방향 지정: 세로
-  max-width: 640px; // 최대너비 640px
+  max-width: 40rem; // 최대너비 640px / 16px = 40rem
   height: 1000px;
   background-color: #f8f5ec;
   margin: auto;
@@ -14,11 +14,11 @@ export const Container = styled.div`
 
 export const Items = styled.div`
   &.logoCl {
-    margin-top: 210px;
+    margin-top: 13.125rem; // 210px / 16px = 13.125rem
   }
 
   &.inputField {
-    margin-top: 35px;
+    margin-top: 2.1875rem; // 35px / 16px = 2.1875rem
   }
   &.hint {
   }
@@ -27,8 +27,8 @@ export const Items = styled.div`
   &.btm {
     color: #d94d4d;
     font-weight: 400;
-    margin-top: 20px;
-    font-size: 24px;
+    margin-top: 1.25rem; // 20px / 16px = 1.25rem
+    font-size: 1.5rem; // 24px / 16px = 1.5rem
     .link_style {
       color: #d94d4d;
       text-decoration-line: none;
@@ -37,28 +37,28 @@ export const Items = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 500px;
+  width: 31.25rem; // 500px / 16px = 31.25rem
   border: 0px;
-  height: 75px;
-  margin: 5px;
-  font-size: 24px;
+  height: 4.6875rem; // 75px / 16px = 4.6875rem
+  margin: 0.3125rem; // 5px / 16px = 0.3125rem
+  font-size: 1.5rem; // 24px / 16px = 1.5rem
   font-weight: 700;
-  margin: 5px;
+  margin: 0.3125rem; // 5px / 16px = 0.3125rem
   line-height: normal;
   outline-style: none;
   &::placeholder {
-    padding: 0.8em;
-    font-weight: 600;
+    padding: 0.05rem; // 0.8em / 16px = 0.05rem
+    font-weight: 0.0375rem; // 0.6px / 16px = 0.0375rem
     color: lightgrey; /* 이 부분은 placeholder 텍스트의 색상을 설정합니다 */
   }
 `;
 
 export const Button = styled.button`
-  margin-top: 50px;
-  width: 500px;
-  height: 75px;
+  margin-top: 3.125rem; // 50px / 16px = 3.125rem
+  width: 31.25rem; // 500px / 16px = 31.25rem
+  height: 4.6875rem; // 75px / 16px = 4.6875rem
   background-color: #d94d4d;
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem; // 24px / 16px = 1.5rem
   font-weight: 600;
 `;

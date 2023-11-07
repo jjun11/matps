@@ -46,8 +46,9 @@ export const Input = styled.input`
   margin: 0.3125rem; // 5px / 16px = 0.3125rem
   line-height: normal;
   outline-style: none;
+  padding: 0.8rem;
+  box-sizing: border-box;
   &::placeholder {
-    padding: 0.05rem; // 0.8em / 16px = 0.05rem
     font-weight: 0.0375rem; // 0.6px / 16px = 0.0375rem
     color: lightgrey; /* 이 부분은 placeholder 텍스트의 색상을 설정합니다 */
   }

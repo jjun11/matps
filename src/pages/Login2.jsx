@@ -30,10 +30,10 @@ const Login2 = (page) => {
   };
   // 5~20 자리 영문자, 숫자, 언더스코어(_)로 이루어진 ID 검사
   const onChangeId = (e) => {
-    const regexId = /^\w{5,40}$/; // 영문, 숫자, 언더스코어로만 이루어진 5~40 자 검사
+    const regexId = /^\w{5,20}$/; // 영문, 숫자, 언더스코어로만 이루어진 5~40 자 검사
     setInputId(e.target.value);
     if (!regexId.test(e.target.value)) {
-      setErrorId("5자리 이상 40자리 미만 숫자, 영어로 입력해 주세요.");
+      setErrorId("5자리 이상 20자리 미만 숫자, 영어로 입력해 주세요.");
       setCheckId(false);
     } else {
       setErrorId("");
@@ -103,6 +103,11 @@ const Login2 = (page) => {
           </div>
         </Items>
         <Items className="hint">
+          {/* {inputId.length > 0 && (
+            <span className={`${checkId ? "success" : "error"}`}>
+              {errorId}
+            </span>
+          )} */}
           {inputPw.length > 0 && (
             <span className={`${checkPw ? "success" : "error"}`}>
               {errorPw}

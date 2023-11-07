@@ -1,7 +1,7 @@
 import { Container, Items, Input, Label, Button } from "../component/FindIdComponent";
 import { useState } from "react";
 
-const FindId = () => {
+const FindPw = () => {
 
     const [inputName, setInputName] = useState("")
     const [inputMail, setInputMail] = useState("");
@@ -20,7 +20,7 @@ const FindId = () => {
     return (
         <>
         <Container>
-        <Items className="FindId">아이디 찾기</Items>
+        <Items className="FindId">비밀번호 찾기</Items>
         <hr style={{ width: "100%" }} />
         <Items className="title">
                 본인확인 이메일 인증
@@ -47,4 +47,4 @@ const FindId = () => {
     );
 };
 
-export default FindId;
+export default FindPw;

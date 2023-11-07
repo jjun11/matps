@@ -42,7 +42,7 @@ const Signup2 = () => {
     setModalOpen(false);
   };
 
-  const onChangId = (e) => {
+  const onChangeId = (e) => {
     setInputId(e.target.value);
     if (e.target.value.length < 5 || e.target.value.length > 40) {
       setIdMessage("5자리 이상 40자리 미만으로 입력해 주세요.");
@@ -64,7 +64,7 @@ const Signup2 = () => {
       );
       setIsPw(false);
     } else {
-      setPwMessage("안전한 비밀번호에요 : )");
+      setPwMessage("안전한 비밀번호에요.");
       setIsPw(true);
     }
 
@@ -72,7 +72,7 @@ const Signup2 = () => {
       setConPwMessage("비밀 번호가 일치하지 않습니다.");
       setIsConPw(false);
     } else {
-      setConPwMessage("비밀 번호가 일치 합니다. )");
+      setConPwMessage("비밀 번호가 일치 합니다.");
       setIsConPw(true);
     }
   };
@@ -141,7 +141,7 @@ const Signup2 = () => {
         <Items className="item2">
           <Items className="inputline">
             <Label>아이디</Label>
-            <Input placeholder="아이디" value={inputId} onChange={onChangId} />
+            <Input placeholder="아이디" value={inputId} onChange={onChangeId} />
           </Items>
           <Items className="inputline">
             <Label>비밀번호</Label>

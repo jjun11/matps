@@ -34,10 +34,13 @@ export const Input = styled.input`
   height: 2.75rem; /* 변경: 44px / 16px = 2.75rem */
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 1.875rem; /* 변경: 30px / 16px = 1.875rem */
+  padding: 1rem;
+  box-sizing: border-box;
+  font-size: 1.125rem;
   &::placeholder {
+
     font-weight: 400;
     font-size: 1.125rem; /* 변경: 18px / 16px = 1.125rem */
-    padding: 0.9375rem; /* 변경: 15px / 16px = 0.9375rem */
     color: lightgrey; /* 이 부분은 placeholder 텍스트의 색상을 설정합니다 */
   }
 `;

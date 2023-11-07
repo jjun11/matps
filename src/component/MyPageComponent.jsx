@@ -68,7 +68,7 @@ justify-content: center;
     height:300px;
     p {
         width:569px;
-        font-size: 24``;
+        font-size: 24;
     }
     div {
         width: 270px;

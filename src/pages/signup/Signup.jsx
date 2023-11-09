@@ -1,15 +1,22 @@
 import { useNavigate } from "react-router-dom"; // React Router의 useNavigate 훅을 불러옴
-import Modal from "../util/Modal"; // Modal 컴포넌트를 불러옴
-import AxiosApi from "../api/AxiosApi"; // Axios를 통해 서버로 HTTP 요청을 보내는 API를 불러옴
+import Modal from "../../util/Modal"; // Modal 컴포넌트를 불러옴
+import AxiosApi from "../../api/AxiosApi"; // Axios를 통해 서버로 HTTP 요청을 보내는 API를 불러옴
 import {
   Container,
   Items,
   Input,
   Button,
   Label,
-} from "../component/SignupComponent2"; // SignupComponent2 컴포넌트에서 필요한 요소들을 불러옴
+  RadioContainer,
+  RadioInput,
+  RadioLabel,
+} from "../../component/signup/SignupComponent"; // SignupComponent2 컴포넌트에서 필요한 요소들을 불러옴
 import { useState } from "react"; // React의 useState 훅을 불러옴
-import matpslogo from "../images/matps로고.png"; // matps로고 이미지 파일을 불러옴
+import matpslogo from "../../images/matps로고.png"; // matps로고 이미지 파일을 불러옴
+import styled from "styled-components";
+const setIdMessage = styled.div`
+  color: red;
+`;
 
 const Signup2 = () => {
   const navigate = useNavigate(); // 화면 간 이동을 가능케 하는 useNavigate 훅을 사용
@@ -20,7 +27,7 @@ const Signup2 = () => {
   const [inputConPw, setInputConPw] = useState(""); // 비밀번호 확인 입력값을 담는 상태와 그 상태를 업데이트하는 함수
   const [inputName, setInputName] = useState(""); // 이름 입력값을 담는 상태와 그 상태를 업데이트하는 함수
   const [inputNick, setInputNick] = useState(""); // 닉네임 입력값을 담는 상태와 그 상태를 업데이트하는 함수
-  const [inputEmail, setInputEmail] = useState(""); // 이메일 입력값을 담는 상태와 그 상태를 업데이트하는 함수
+  const [inputMail, setInputMail] = useState(""); // 이메일 입력값을 담는 상태와 그 상태를 업데이트하는 함수
 
   // 오류 메시지
   const [idMessage, setIdMessage] = useState(""); // 아이디 관련 오류 메시지를 표시하는 상태
@@ -29,13 +36,16 @@ const Signup2 = () => {
   const [mailMessage, setMailMessage] = useState(""); // 이메일 관련 오류 메시지를 표시하는 상태
 
   // 유효성 검사
-  const [isId, setIsId] = useState(false); // 아이디 유효성 검사 결과를 나타내는 상태
-  const [isPw, setIsPw] = useState(false); // 비밀번호 유효성 검사 결과를 나타내는 상태
-  const [isConPw, setIsConPw] = useState(false); // 비밀번호 확인 유효성 검사 결과를 나타내는 상태
-  const [isName, setIsName] = useState(false); // 이름 유효성 검사 결과를 나타내는 상태
-  const [isNick, setIsNick] = useState(false); // 닉네임 유효성 검사 결과를 나타내는 상태
-  const [isMail, setIsMail] = useState(false); // 이메일 유효성 검사 결과를 나타내는 상태
-
+  const [isId, setIsId] = useState(false); // 아이디 유효성 검사 상태
+  const [isPw, setIsPw] = useState(false); // 비밀번호 유효성 검사 상태
+  const [isConPw, setIsConPw] = useState(false); // 비밀번호 확인 유효성 검사  상태
+  const [isName, setIsName] = useState(false); // 이름 유효성 검사 상태
+  const [isNick, setIsNick] = useState(false); // 닉네임 유효성 검사 상태
+  const [isMail, setIsMail] = useState(false); // 이메일 유효성 검사  상태
+  const [isGender, setIsGender] = useState(false); // 이메일 유효성 검사 상태
+  const [inputGender, setGender] = useState(false); // 성별 유효성 검사
+  const [termsAgreed, setTermsAgreed] = useState(false); // 이용약관 동의상태
+  const [privacyAgreed, setPrivacyAgreed] = useState(false); // 개인정보처리방침 동의상태
   // 팝업
   const [modalOpen, setModalOpen] = useState(false); // 팝업 모달의 열림/닫힘 상태를 나타내는 상태
   const [modalText, setModelText] = useState("중복된 아이디 입니다."); // 팝업 모달에 표시될 텍스트
@@ -46,8 +56,8 @@ const Signup2 = () => {
 
   const onChangeId = (e) => {
     setInputId(e.target.value); // 아이디 입력값 업데이트
-    if (e.target.value.length < 5 || e.target.value.length > 40) {
-      setIdMessage("5자리 이상 40자리 미만으로 입력해 주세요."); // 아이디 유효성 검사 오류 메시지 설정
+    if (e.target.value.length < 5 || e.target.value.length > 20) {
+      setIdMessage("5자리 이상 20자리 미만으로 입력해 주세요."); // 아이디 유효성 검사 오류 메시지 설정
       setIsId(false); // 아이디 유효성 검사 결과 설정 (유효하지 않음)
     } else {
       setIdMessage("올바른 형식 입니다."); // 아이디 유효성 검사 통과 메시지 설정
@@ -101,12 +111,17 @@ const Signup2 = () => {
     setIsNick(true); // 닉네임 유효성 검사 결과 설정 (유효함)
   };
 
-  const onChangeMail = (e) => {
-    setInputEmail(e.target.value); // 이메일 입력값 업데이트
+  const onChangMail = (e) => {
+    setInputMail(e.target.value); // 이메일 입력값 업데이트
     setIsMail(true); // 이메일 유효성 검사 결과 설정 (유효함)
   };
 
-  const onClickLogin = async () => {
+  const handleGenderChange = (e) => {
+    setGender(e.target.value); // 라디오 버튼 변경 시 성별 상태 업데이트
+    setIsGender(true); // 성별 유효성 검사 결과 설정 (유효함)
+  };
+
+  const onClickSign = async () => {
     console.log("Click 회원가입");
 
     // 가입 여부 우선 확인
@@ -118,36 +133,39 @@ const Signup2 = () => {
       console.log("가입된 아이디가 없습니다. 다음 단계 진행 합니다.");
 
       // 닉네임 중복 확인 추가
-    const nickCheck = await AxiosApi.memberRegCheck(inputNick);
-    console.log("닉네임 중복 확인: ", nickCheck.data);
+      const nickCheck = await AxiosApi.memberRegCheck(inputNick);
+      console.log("닉네임 중복 확인: ", nickCheck.data);
 
-    if (nickCheck.data.result === "OK") {
-      console.log("사용 가능한 닉네임입니다. 가입을 진행합니다.");
+      if (nickCheck.data.result === "OK") {
+        console.log("사용 가능한 닉네임입니다. 가입을 진행합니다.");
 
-      const memberReg = await AxiosApi.memberReg(
-        inputId,
-        inputPw,
-        inputName,
-        inputNick,
-        inputEmail
-      );
-      console.log(memberReg.data.result);
-      // 회원가입 수행
+        const memberReg = await AxiosApi.memberReg(
+          // 회원정보를 서버로 보내는 AxiosApi
+          inputId, // id 정보 추가
+          inputPw, // pw 정보 추가
+          inputName, // 이름 정보 추가
+          inputNick, // 닉네임 정보 추가
+          inputMail, // 이메일 정보 추가
+          inputGender // 성별 정보 추가
+        );
 
-      if (memberReg.data.result === "OK") {
-        navigate("/"); // 회원 가입이 성공한 경우 홈 화면으로 이동
+        console.log(memberReg.data.result);
+        // 회원가입 수행
+
+        if (memberReg.data.result === "OK") {
+          navigate("/"); // 회원 가입이 성공한 경우 홈 화면으로 이동
+        } else {
+          setModalOpen(true); // 회원 가입에 실패한 경우 모달 팝업을  열고 오류 메시지를 설정
+          setModelText("회원 가입에 실패 했습니다."); // 모달 팝업에 표시할 텍스트
+        }
       } else {
-        setModalOpen(true); // 회원 가입에 실패한 경우 모달 팝업을  열고 오류 메시지를 설정
-        setModelText("회원 가입에 실패 했습니다."); // 모달 팝업에 표시할 텍스트
+        console.log("이미 사용 중인 닉네임입니다.");
+        setModalOpen(true); // 이미 사용 중인 닉네임인 경우 모달 팝업을 열고 오류 메시지를 설정
+        setModelText("이미 사용 중인 닉네임입니다."); // 모달 팝업에 표시할 텍스트 설정
       }
     } else {
-      console.log("이미 사용 중인 닉네임입니다.");
-      setModalOpen(true); // 이미 사용 중인 닉네임인 경우 모달 팝업을 열고 오류 메시지를 설정
-      setModelText("이미 사용 중인 닉네임입니다."); // 모달 팝업에 표시할 텍스트 설정
-    }
-    } else {
       console.log("이미 가입된 아이디 입니다.");
-      setModalOpen(true);  // 이미 가입된 회원인 경우 모달 팝업을 열고 오류 메시지를 설정
+      setModalOpen(true); // 이미 가입된 회원인 경우 모달 팝업을 열고 오류 메시지를 설정
       setModelText("이미 가입된 아이디 입니다."); // 모달 팝업에 표시할 텍스트 설정
     }
   };
@@ -172,7 +190,7 @@ const Signup2 = () => {
               {idMessage}
             </span>
           )}
-          </Items>
+        </Items>
         <Items className="inputline">
           <Label>비밀번호</Label>
           {/* 비밀번호 입력필드 */}
@@ -228,12 +246,80 @@ const Signup2 = () => {
         <Items className="inputline">
           <Label>이메일</Label>
           <Input
-            type="email"
+            type="Mail"
             placeholder="이메일"
-            value={inputEmail}
-            onChange={onChangeMail}
+            value={inputMail}
+            onChange={onChangMail}
           />
         </Items>
+        <Items className="inputline">
+          <Label>성별</Label>
+          <RadioContainer>
+            <RadioLabel>
+              남자
+              <RadioInput
+                type="radio"
+                name="gender"
+                value="male"
+                checked={inputGender === "male"}
+                onChange={handleGenderChange}
+              />
+            </RadioLabel>
+            <RadioLabel>
+              여자
+              <RadioInput
+                type="radio"
+                name="gender"
+                value="female"
+                checked={inputGender === "female"}
+                onChange={handleGenderChange}
+              />
+            </RadioLabel>
+          </RadioContainer>
+        </Items>
+      </Items>
+      <Items className="agree">
+      <span>이용약관 동의</span>
+        <Input
+          className="agree"
+          type="checkbox"
+          id="termsCheckbox"
+          checked={termsAgreed}
+          onChange={() => setTermsAgreed(!termsAgreed)}
+        />
+        <button onClick={() => window.open("/TermsOfUse", "_blank")}>
+          약관보기
+        </button>
+        <span>개인정보 처리방침 동의</span>
+        <Input
+          className="agree"
+          type="checkbox"
+          id="privacyCheckbox"
+          checked={privacyAgreed}
+          onChange={() => setPrivacyAgreed(!privacyAgreed)}
+        />
+        <button onClick={() => window.open("/PrivacyPolicy", "_blank")}>
+          약관보기
+        </button>
+      </Items>
+      <Items className="item2">
+        {isId &&
+        isPw &&
+        isConPw &&
+        isName &&
+        isNick &&
+        isMail &&
+        isGender &&
+        termsAgreed & privacyAgreed ? ( // 모든 입력 필드가 유효한 경우 회원가입 버튼 활성화
+          <Button enabled onClick={onClickSign}>
+            가입하기
+          </Button>
+        ) : (
+          <Button disabled>정보미입력</Button> // 회원가입 버튼 비활성화
+        )}
+        <Modal open={modalOpen} close={closeModal} header="오류">
+          {modalText}
+        </Modal>
       </Items>
     </Container>
   );

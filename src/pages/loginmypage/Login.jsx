@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import AxiosApi from "../api/AxiosApi";
+import AxiosApi from "../../api/AxiosApi";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Container, Input, Items } from "../component/LoginComponent2";
-import matpsSymbol from "../images/matpsSymbol.png";
-import Modal from "../util/Modal";
+import {
+  Button,
+  Container,
+  Input,
+  Items,
+} from "../../component/loginmypage/LoginComponent";
+import matpsSymbol from "../../images/matpsSymbol.png";
+import Modal from "../../util/Modal";
 
 const Login2 = (page) => {
   const navigate = useNavigate(); // 화면 이동용 hook
@@ -128,11 +133,15 @@ const Login2 = (page) => {
           {/* 로그인 실패 시 모달 팝업 내용 */}
         </Modal>
         <Items className="btm">
-          <Link to="/Signup" className="link_style">
+          <Link to="/FindId" className="link_style">
             <span>아이디 찾기</span>
-            <span> | </span>
+          </Link>
+          <span> | </span>
+          <Link to="/FindPw" className="link_style">
             <span>비밀번호 찾기</span>
-            <span> | </span>
+          </Link>
+          <span> | </span>
+          <Link to="/Signup" className="link_style">
             <span>회원가입</span>
           </Link>
         </Items>

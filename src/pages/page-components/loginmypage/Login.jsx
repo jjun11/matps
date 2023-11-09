@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import AxiosApi from "../../api/AxiosApi";
+import AxiosApi from "../../../api/AxiosApi";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
   Container,
   Input,
   Items,
-} from "../../component/loginmypage/LoginComponent";
-import matpsSymbol from "../../images/matpsSymbol.png";
-import Modal from "../../util/Modal";
+} from "../../style-components/loginmypage/LoginComponent";
+import matpsSymbol from "../../../images/matpsSymbol.png";
+import Modal from "../../../util/Modal";
 
 const Login2 = (page) => {
   const navigate = useNavigate(); // 화면 이동용 hook
@@ -79,7 +79,7 @@ const Login2 = (page) => {
       } else if (page === "reserve") {
         navigate("/reserve"); // 예약 버튼으로 로그인 후 성공한 경우 예약으로 이동
       } else {
-        navigate("/Layout");
+        navigate("/Signup");
       }
     } else {
       setModalOpen(true); // 로그인 실패 시 모달 팝업 열기

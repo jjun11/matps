@@ -4,10 +4,10 @@ import {
   Input,
   Label,
   Button,
-} from "../../component/signup/FindIdComponent";
+} from "../../style-components/signup/FindIdComponent";
 import { useState } from "react";
 
-const FindId = () => {
+const FindPw = () => {
   const [inputName, setInputName] = useState("");
   const [inputMail, setInputMail] = useState("");
   const [inputCode, setInputCode] = useState("");
@@ -25,7 +25,7 @@ const FindId = () => {
   return (
     <>
       <Container>
-        <Items className="FindId">아이디 찾기</Items>
+        <Items className="FindId">비밀번호 찾기</Items>
         <hr style={{ width: "100%" }} />
         <Items className="title">본인확인 이메일 인증</Items>
         <Items className="inputline">
@@ -58,4 +58,4 @@ const FindId = () => {
   );
 };
 
-export default FindId;
+export default FindPw;

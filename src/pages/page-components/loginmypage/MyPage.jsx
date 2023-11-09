@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Container, Items } from "../../component/loginmypage/MyPageComponent";
-import Settings from "../../images/settings.png";
-import AxiosApi from "../../api/AxiosApi";
-import Modal from "../../util/Modal";
+import { Container, Items } from "../../style-components/loginmypage/MyPageComponent";
+import Settings from "../../../images/settings.png";
+import AxiosApi from "../../../api/AxiosApi";
+import Modal from "../../../util/Modal";
 
 //닉네임
 

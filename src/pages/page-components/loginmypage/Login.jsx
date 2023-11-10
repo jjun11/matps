@@ -10,7 +10,7 @@ import {
 import matpsSymbol from "../../../images/matpsSymbol.png";
 import Modal from "../../../util/Modal";
 
-const Login2 = (page) => {
+const Login = (page) => {
   const navigate = useNavigate(); // 화면 이동용 hook
 
   // ID / PW 입력, setInputId(Pw) 를 통해 inputId(Pw) 업데이트, 기본값은 ""
@@ -51,6 +51,7 @@ const Login2 = (page) => {
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]).{8,40}$/; // 영문, 숫자, 특수문자가 각각 하나 이상은 포함되었는 8 ~ 40자인지 검사
     setInputPw(e.target.value);
     if (!regexPw.test(e.target.value)) {
+      //
       setErrorPw(
         "숫자+영문+특수문자 조합으로 8자리 이상 40자리 미만으로 입력해 주세요."
       );
@@ -64,7 +65,7 @@ const Login2 = (page) => {
   const onClickLogin = async () => {
     // 로그인을 위한  호출
     const res = await AxiosApi.memberLogin(inputId, inputPw); // 서버에 아이디와 패스워드를 보내 로그인을 시도하고 응답을 받음
-    console.log(res.data); // 서버 응답을 콘솔에 출력
+    console.log(); // 서버 응답을 콘솔에 출력
 
     if (res.data === true) {
       // 로그인 성공한 경우
@@ -79,7 +80,7 @@ const Login2 = (page) => {
       } else if (page === "reserve") {
         navigate("/reserve"); // 예약 버튼으로 로그인 후 성공한 경우 예약으로 이동
       } else {
-        navigate("/Signup");
+        navigate("/myPage");
       }
     } else {
       setModalOpen(true); // 로그인 실패 시 모달 팝업 열기
@@ -150,4 +151,4 @@ const Login2 = (page) => {
   );
 };
 
-export default Login2;
+export default Login;

@@ -11,14 +11,14 @@ import {
   RadioInput,
   RadioLabel,
 } from "../../style-components/signup/SignupComponent"; // SignupComponent2 컴포넌트에서 필요한 요소들을 불러옴
-import { useState } from "react"; // React의 useState 훅을 불러옴
+import { useEffect, useState } from "react"; // React의 useState 훅을 불러옴
 import matpslogo from "../../../images/matps로고.png"; // matps로고 이미지 파일을 불러옴
 import styled from "styled-components";
 const setIdMessage = styled.div`
   color: red;
 `;
 
-const Signup2 = () => {
+const Signup = () => {
   const navigate = useNavigate(); // 화면 간 이동을 가능케 하는 useNavigate 훅을 사용
 
   // 키보드 입력
@@ -33,6 +33,7 @@ const Signup2 = () => {
   const [idMessage, setIdMessage] = useState(""); // 아이디 관련 오류 메시지를 표시하는 상태
   const [pwMessage, setPwMessage] = useState(""); // 비밀번호 관련 오류 메시지를 표시하는 상태
   const [conPwMessage, setConPwMessage] = useState(""); // 비밀번호 확인 관련 오류 메시지를 표시하는 상태
+  const [nickMessage, setNickMessage] = useState(""); // 비밀번호 확인 관련 오류 메시지를 표시하는 상태
   const [mailMessage, setMailMessage] = useState(""); // 이메일 관련 오류 메시지를 표시하는 상태
 
   // 유효성 검사
@@ -54,6 +55,42 @@ const Signup2 = () => {
     setModalOpen(false); // 팝업 모달을 닫는 함수
   };
 
+  // ID 입력 필드에서 포커스가 벗어났을 때 중복 확인
+  const checkDuplicateId = async () => {
+    // 중복확인 함수
+    if (inputId.length > 0) {
+      // 입력된 아이디가 있을 때
+      const resultId = await AxiosApi.memberRegCheckId(inputId); // AxiosApi의 memberRegCheckId 함수를 통해 서버로 아이디 중복확인 요청
+      console.log(resultId.data);
+      if (resultId.data === true) {
+        // 서버로부터 받은 응답이 "true"인 경우
+        setIdMessage("사용 가능한 아이디입니다.");
+        setIsId(true); // 아이디 유효성 검사 결과 설정 (유효함)
+      } else {
+        // 서버로부터 받은 응답이 "ture"가 아닌 경우
+        setIdMessage("이미 사용 중인 아이디입니다.");
+        setIsId(false); // 아이디 유효성 검사 결과 설정 (유효하지 않음)
+      }
+    }
+  };
+
+  // 닉네임 입력 필드에서 포커스가 벗어났을 때 중복 확인
+  const checkDuplicateNick = async () => {
+    if (inputNick.length > 0) {
+      const resultNick = await AxiosApi.memberRegCheckNick(inputNick);
+      console.log(resultNick.data);
+      if (resultNick.data === true) {
+        // 서버로부터 받은 응답이 "true"인 경우
+        setNickMessage("사용 가능한 닉네임입니다.");
+        setIsId(true); // 닉네임 유효성 검사 결과 설정 (유효함)
+      } else {
+        // 서버로부터 받은 응답이 "ture"가 아닌 경우
+        setNickMessage("이미 사용 중인 닉네임입니다.");
+        setIsId(false); // 닉네임 유효성 검사 결과 설정 (유효하지 않음)
+      }
+    }
+  };
+
   const onChangeId = (e) => {
     setInputId(e.target.value); // 아이디 입력값 업데이트
     if (e.target.value.length < 5 || e.target.value.length > 20) {
@@ -64,7 +101,6 @@ const Signup2 = () => {
       setIsId(true); // 아이디 유효성 검사 결과 설정 (유효함)
     }
   };
-
   const onChangePw = (e) => {
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]).{8,40}$/; // 안전한 비밀번호를 나타내는 정규식
@@ -111,7 +147,7 @@ const Signup2 = () => {
     setIsNick(true); // 닉네임 유효성 검사 결과 설정 (유효함)
   };
 
-  const onChangMail = (e) => {
+  const onChangeMail = (e) => {
     setInputMail(e.target.value); // 이메일 입력값 업데이트
     setIsMail(true); // 이메일 유효성 검사 결과 설정 (유효함)
   };
@@ -122,51 +158,27 @@ const Signup2 = () => {
   };
 
   const onClickSign = async () => {
-    console.log("Click 회원가입");
+    // 회원가입 버튼 클릭 시 수행되는 함수
+    console.log("Click 회원가입"); // 회원가입 버튼이 클릭되었음을 콘솔에 "Click 회원가입" 메시지로 출력
 
-    // 가입 여부 우선 확인
-    const memberCheck = await AxiosApi.memberRegCheck(inputId);
-    console.log("가입 가능 여부 확인 : ", memberCheck.data);
+    const memberReg = await AxiosApi.memberReg(
+      // 회원정보를 서버로 보내는 AxiosApi
+      inputId, // id 정보 추가
+      inputPw, // pw 정보 추가
+      inputName, // 이름 정보 추가
+      inputNick, // 닉네임 정보 추가
+      inputMail, // 이메일 정보 추가
+      inputGender // 성별 정보 추가
+    );
+    console.log(inputId, inputPw, inputName, inputNick, inputMail, inputGender); // 회원정보를 콘솔에 출력
+    console.log(memberReg.data); // 회원가입 결과 출력
+    // 회원가입 수행
 
-    // 가입 여부 확인 후 가입 절차 진행
-    if (memberCheck.data.result === "OK") {
-      console.log("가입된 아이디가 없습니다. 다음 단계 진행 합니다.");
-
-      // 닉네임 중복 확인 추가
-      const nickCheck = await AxiosApi.memberRegCheck(inputNick);
-      console.log("닉네임 중복 확인: ", nickCheck.data);
-
-      if (nickCheck.data.result === "OK") {
-        console.log("사용 가능한 닉네임입니다. 가입을 진행합니다.");
-
-        const memberReg = await AxiosApi.memberReg(
-          // 회원정보를 서버로 보내는 AxiosApi
-          inputId, // id 정보 추가
-          inputPw, // pw 정보 추가
-          inputName, // 이름 정보 추가
-          inputNick, // 닉네임 정보 추가
-          inputMail, // 이메일 정보 추가
-          inputGender // 성별 정보 추가
-        );
-
-        console.log(memberReg.data.result);
-        // 회원가입 수행
-
-        if (memberReg.data.result === "OK") {
-          navigate("/"); // 회원 가입이 성공한 경우 홈 화면으로 이동
-        } else {
-          setModalOpen(true); // 회원 가입에 실패한 경우 모달 팝업을  열고 오류 메시지를 설정
-          setModelText("회원 가입에 실패 했습니다."); // 모달 팝업에 표시할 텍스트
-        }
-      } else {
-        console.log("이미 사용 중인 닉네임입니다.");
-        setModalOpen(true); // 이미 사용 중인 닉네임인 경우 모달 팝업을 열고 오류 메시지를 설정
-        setModelText("이미 사용 중인 닉네임입니다."); // 모달 팝업에 표시할 텍스트 설정
-      }
+    if (memberReg.data === true) {
+      navigate("/Login"); // 회원 가입이 성공한 경우 로그인 화면으로 이동
     } else {
-      console.log("이미 가입된 아이디 입니다.");
-      setModalOpen(true); // 이미 가입된 회원인 경우 모달 팝업을 열고 오류 메시지를 설정
-      setModelText("이미 가입된 아이디 입니다."); // 모달 팝업에 표시할 텍스트 설정
+      setModalOpen(true); // 회원 가입에 실패한 경우 모달 팝업을  열고 오류 메시지를 설정
+      setModelText("회원 가입에 실패 했습니다."); // 모달 팝업에 표시할 텍스트
     }
   };
 
@@ -182,7 +194,12 @@ const Signup2 = () => {
         <Items className="inputline">
           <Label>아이디</Label>
           {/* 아이디 입력필드 */}
-          <Input placeholder="아이디" value={inputId} onChange={onChangeId} />
+          <Input
+            placeholder="아이디"
+            value={inputId}
+            onChange={onChangeId}
+            onBlur={checkDuplicateId}
+          />
         </Items>
         <Items className="hint">
           {inputId.length > 0 && (
@@ -241,7 +258,15 @@ const Signup2 = () => {
             placeholder="닉네임"
             value={inputNick}
             onChange={onChangeNick}
+            onBlur={checkDuplicateNick}
           />
+        </Items>
+        <Items className="hint">
+          {inputId.length > 0 && (
+            <span className={`message ${isNick ? "success" : "error"}`}>
+              {nickMessage}
+            </span>
+          )}
         </Items>
         <Items className="inputline">
           <Label>이메일</Label>
@@ -249,7 +274,7 @@ const Signup2 = () => {
             type="Mail"
             placeholder="이메일"
             value={inputMail}
-            onChange={onChangMail}
+            onChange={onChangeMail}
           />
         </Items>
         <Items className="inputline">
@@ -325,4 +350,4 @@ const Signup2 = () => {
   );
 };
 
-export default Signup2;
+export default Signup;

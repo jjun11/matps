@@ -139,6 +139,10 @@ const Update = () => {
           <input type="file" onChange={handleFileInputChange} />
       <button onClick={handleUploadClick}>사진 적용</button>
         </Items>
+        <Items className="deleteimg">
+          <Label>프로필 이미지</Label>
+      <button onClick={handleUploadClick}>사진 삭제</button>
+        </Items>
         <Items className="inputline">
           <Label>아이디</Label>
           {/* 아이디 입력필드 */}

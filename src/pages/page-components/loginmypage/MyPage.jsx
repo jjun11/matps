@@ -28,7 +28,7 @@ const MyPage = () => {
     window.localStorage.setItem("userId", ""); // 브라우저 로컬 스토리지에 아이디 저장
     window.localStorage.setItem("userPw", ""); // 브라우저 로컬 스토리지에 패스워드 저장
     window.localStorage.setItem("isLogin", "FALSE"); // 로그인 상태 저장
-    navigate("/Login");
+    navigate("/StoreListLayout");
   };
 
   const onClickUpdate = async () => {
@@ -45,7 +45,7 @@ const MyPage = () => {
     console.log("삭제 회원 아이디 : " + userId);
     console.log("삭제 결과 : " + memberDel.data); // 회원 삭제 결과 출력
     window.alert("회원 탈퇴가 완료되었습니다."); // 회원 탈퇴 완료 메시지 표시
-    navigate("/Login");
+    navigate("/StoreListLayout");
     } else {
       console.log("회원탈퇴 취소");
     }

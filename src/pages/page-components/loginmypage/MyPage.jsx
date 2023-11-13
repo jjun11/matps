@@ -62,7 +62,7 @@ const MyPage = () => {
           ></img>
         </Items>
         <Items className="nick">{userInfo.my_nickname}</Items>
-        <Items className="point" onClick={onClickUpdate}>
+        <Items className="update" onClick={onClickUpdate}>
           내 정보 수정{" "}
         </Items>
         <Items className="present">
@@ -89,14 +89,14 @@ const MyPage = () => {
         </Items>
         <Items className="link">
           <p>문의 및 알림</p>
-          <div button onClick={() => window.open("/TermsOfUse", "_blank")}>
-            이용약관
+          <div><span button onClick={() => window.open("/TermsOfUse", "_blank")}>
+            이용약관</span>
           </div>
-          <div button onClick={() => window.open("/PrivacyPolicy", "_blank")}>
-            개인정보처리방침
+          <div><span button onClick={() => window.open("/PrivacyPolicy", "_blank")}>
+            개인정보처리방침</span>
           </div>
-          <div onClick={() => alert('현재 버전: 1.0.0')}>현재 버전</div>
-          <div onClick={onClickDelete}>회원 탈퇴</div>
+          <div><span onClick={() => alert('현재 버전: 1.0.0')}>현재 버전</span></div>
+          <div><span onClick={onClickDelete} style={{ color: "#d94d4d" }}>회원 탈퇴</span></div>
         </Items>
         <Items className="foot">
           <div className="logout" onClick={onClickLogout}>

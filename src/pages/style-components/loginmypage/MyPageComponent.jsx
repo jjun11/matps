@@ -40,7 +40,7 @@ export const Items = styled.div`
     font-weight: 800;
     margin: 2.5rem; /* 변경: 40px / 16px = 2.5rem */
   }
-  &.point {
+  &.update {
     width: 35.5625rem; /* 변경: 569px / 16px = 35.5625rem */
     height: 5rem; /* 변경: 80px / 16px = 5rem */
     background-color: #d94d4d;
@@ -50,6 +50,10 @@ export const Items = styled.div`
     font-weight: 600;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    &:active {
+    background-color: #a94a4a;// 클릭 시 
+    transform: translateY(2px);}
   }
   &.present {
     display: flex;
@@ -88,6 +92,9 @@ export const Items = styled.div`
       font-weight: 600;
       width: 17.75rem; /* 변경: 284px / 16px = 17.75rem */
       height: 2.5rem; /* 변경: 40px / 16px = 2.5rem */
+        span {
+      cursor: pointer;
+      }
     }
   }
   &.foot {
@@ -98,7 +105,8 @@ export const Items = styled.div`
     div {
       opacity: 0.45;
       font-weight: 600;
-      font-size: 1.25rem; /* 변경: 20px / 16px = 1.25rem */
+      font-size: 1.5rem; /* 변경: 20px / 16px = 1.25rem */
+      cursor: pointer;
 
       &.setting{
         opacity: .3;

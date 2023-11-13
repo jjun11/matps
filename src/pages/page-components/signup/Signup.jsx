@@ -47,9 +47,25 @@ const Signup = () => {
   const [inputGender, setGender] = useState(false); // 성별 유효성 검사
   const [termsAgreed, setTermsAgreed] = useState(false); // 이용약관 동의상태
   const [privacyAgreed, setPrivacyAgreed] = useState(false); // 개인정보처리방침 동의상태
+  
+  const [allAgreed, setAllAgreed] = useState(false); // 약관 모두동의 상태
+
+  useEffect(() => {
+    setAllAgreed(termsAgreed && privacyAgreed);
+  }, [termsAgreed, privacyAgreed]);
+
+  const handleAllAgreedChange = () => {
+    const newAllAgreed = !allAgreed;
+    setAllAgreed(newAllAgreed);
+    setTermsAgreed(newAllAgreed);
+    setPrivacyAgreed(newAllAgreed);
+  };
+
   // 팝업
   const [modalOpen, setModalOpen] = useState(false); // 팝업 모달의 열림/닫힘 상태를 나타내는 상태
   const [modalText, setModelText] = useState("중복된 아이디 입니다."); // 팝업 모달에 표시될 텍스트
+
+
 
   const closeModal = () => {
     setModalOpen(false); // 팝업 모달을 닫는 함수
@@ -304,6 +320,14 @@ const Signup = () => {
         </Items>
       </Items>
       <Items className="agree">
+        <span id="allagreed">모두 동의</span>
+        <Input
+          className="agree"
+          type="checkbox"
+          id="allAgreeCheckbox"
+          checked={allAgreed}
+          onChange={handleAllAgreedChange}
+        />
         <span>이용약관 동의</span>
         <Input
           className="agree"

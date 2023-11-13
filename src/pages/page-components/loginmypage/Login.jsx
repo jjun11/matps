@@ -13,6 +13,21 @@ import Modal from "../../../util/Modal";
 const Login = (page) => {
   const navigate = useNavigate(); // 화면 이동용 hook
 
+  // 페이지 진입 시 로그인 여부 확인
+const checkLoginStatus = () => {
+  const isLogin = window.localStorage.getItem("isLogin") === "TRUE";
+  return isLogin;
+};
+
+// 페이지 진입 시 호출
+useEffect(() => {
+  if (checkLoginStatus()) {
+    // 로그인 상태라면 다른 페이지로 리다이렉트
+    navigate("/Signup"); // 원래 페이지로 돌아가는 경로로 변경
+  }
+}, []);
+
+
   // ID / PW 입력, setInputId(Pw) 를 통해 inputId(Pw) 업데이트, 기본값은 ""
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
@@ -96,6 +111,7 @@ const Login = (page) => {
   return (
     <>
       <Container>
+        
         <Items className="logoCl">
           <img src={matpsSymbol} alt="Logo" style={{ width: "18.75rem" }} />{" "}
           {/* 로고 이미지 표시 */}

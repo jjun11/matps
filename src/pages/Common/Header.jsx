@@ -5,6 +5,9 @@ import HeadSearchIcon from "../../images/SearchIcon.png";
 import CommunicationIcon from "../../images/ChatIcon.png";
 import MypageIcon from "../../images/UserIcon.png";
 import DetailSearchScreen from "./HeaderSearchDetail";
+import HeaderWithModal from "./LoginButton";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const HeaderTab = styled.div`
   display: flex;
@@ -93,12 +96,12 @@ const HeaderUserInterface = styled.img`
 
 const DetailSearchScreenWrapper = styled.div`
   position: fixed;
-  left: -23px;
+  left: 0px;
   width: 100%;
   height: 312px;
   top: 80px;
   background-color: rgba(0, 0, 0, 0.15);
-  z-index: 3;
+  z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,11 +116,17 @@ const ModalBackground = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.05);
-  z-index: 2;
+  z-index: 4;
   cursor: pointer;
 `;
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/Home");
+  };
+
   const [searchQuery, setSearchQuery] = useState("");
   const [showDetailSearch, setShowDetailSearch] = useState(false);
   const modalRef = useRef(null);
@@ -156,7 +165,12 @@ const Header = () => {
 
   return (
     <HeaderTab>
-      <HeaderImg alt="헤더가로로고" src={HeaderMatpsLogo} />
+      <HeaderImg
+        alt="헤더가로로고"
+        src={HeaderMatpsLogo}
+        onClick={handleLogoClick}
+      />
+
       <HeaderSearchBar>
         <HeaderRectangle
           type="text"
@@ -170,8 +184,12 @@ const Header = () => {
         </HeaderSearchWrapper>
       </HeaderSearchBar>
       <HeaderHeadIcon>
-        <HeaderTalking alt="커뮤니티페이지" src={CommunicationIcon} />
-        <HeaderUserInterface alt="로그인,마이페이지" src={MypageIcon} />
+        <Link to="/BoardListLayout">
+          <HeaderTalking alt="커뮤니티페이지" src={CommunicationIcon} />
+        </Link>
+
+        {/* <HeaderUserInterface alt="로그인,마이페이지" src={MypageIcon} /> */}
+        <HeaderWithModal />
       </HeaderHeadIcon>
       {showDetailSearch && (
         <ModalBackground ref={modalRef} onClick={handleModalClick}>

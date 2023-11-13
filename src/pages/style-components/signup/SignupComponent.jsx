@@ -40,6 +40,24 @@ export const Items = styled.div`
       margin-top: 2.5rem; /* 변경: 40px / 16px = 2.5rem */
       width: 37.5rem; /* 변경: 600px / 16px = 37.5rem */
     }
+    .inputimg {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2.5rem; /* 변경: 40px / 16px = 2.5rem */
+      width: 37.5rem; /* 변경: 600px / 16px = 37.5rem */
+      button {
+        background-color: #ff7070;
+        width: 8rem;
+        height: 3rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: white;
+        border: 0rem;
+
+      }
+      ;
+    }
   }
   &.agree {
     margin-left: 1rem;
@@ -51,11 +69,12 @@ export const Items = styled.div`
         height: 2.2rem;
         background-color:#ff7070;
         color: white;
+        margin-top: 0.5rem;
         margin-left: 1rem;
         margin-right: 1rem;
         font-size: 1.1rem;
         font-weight: 600;
-        padding: 0.5rem;
+        padding: 0.4rem;
         border: 0px;
       }
 

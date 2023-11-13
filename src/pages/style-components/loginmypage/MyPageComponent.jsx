@@ -26,7 +26,15 @@ export const Items = styled.div`
     width: 13.25rem; /* 변경: 212px / 16px = 13.25rem */
     height: 13.25rem; /* 변경: 212px / 16px = 13.25rem */
     border-radius: 6.6875rem; /* 변경: 107px / 16px = 6.6875rem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
   }
+  &.rounded {
+  border-radius: 50%;
+  overflow: hidden;
+}
   &.nick {
     font-size: 2rem; /* 변경: 32px / 16px = 2rem */
     font-weight: 800;
@@ -38,7 +46,7 @@ export const Items = styled.div`
     background-color: #d94d4d;
     color: white;
     display: flex;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     align-items: center;
     justify-content: center;

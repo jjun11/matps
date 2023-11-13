@@ -18,6 +18,7 @@ const StyledBox = styled.div`
   grid-gap: 1rem;
   justify-content: center;
   align-content: center;
+  z-index: ; 
 `;
 
 const OptionButton = styled.button`
@@ -103,7 +104,6 @@ const HeaderSerarchCon = styled.div`
   background-color: #00000080;
   border-radius: 0px 0px 30px 30px;
   box-shadow: inset 0px 4px 80px #00000024;
-  z-index: 2;
 `;
 
 const DetailSearchScreen = () => {

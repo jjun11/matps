@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import AxiosApi from "../../../api/AxiosApi";
+import AxiosApi from "../../../Api/AxiosApi";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
@@ -65,10 +65,16 @@ const Login = (page) => {
   const onClickLogin = async () => {
     // 로그인을 위한  호출
     const res = await AxiosApi.memberLogin(inputId, inputPw); // 서버에 아이디와 패스워드를 보내 로그인을 시도하고 응답을 받음
-    console.log(); // 서버 응답을 콘솔에 출력
+    console.log(res.data); // 서버 응답을 콘솔에 출력
 
     if (res.data === true) {
       // 로그인 성공한 경우
+
+      const res2 = await AxiosApi.memberGet(inputId); // 로그인한 유저의 정보를 서버에서 가져옴
+      console.log("res2 : ");
+      console.log(res2.data);
+
+      window.localStorage.setItem("userInfo", JSON.stringify(res2.data[0])); // 브라우저 로컬 스토리지에 유저 정보 저장
       window.localStorage.setItem("userId", inputId); // 브라우저 로컬 스토리지에 아이디 저장
       window.localStorage.setItem("userPw", inputPw); // 브라우저 로컬 스토리지에 패스워드 저장
       window.localStorage.setItem("isLogin", "TRUE"); // 로그인 상태 저장

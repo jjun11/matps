@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"; // React Router의 useNavigate 훅을 불러옴
 import Modal from "../../../util/Modal"; // Modal 컴포넌트를 불러옴
-import AxiosApi from "../../../api/AxiosApi"; // Axios를 통해 서버로 HTTP 요청을 보내는 API를 불러옴
+import AxiosApi from "../../../Api/AxiosApi"; // Axios를 통해 서버로 HTTP 요청을 보내는 API를 불러옴
 import {
   Container,
   Items,
@@ -82,11 +82,11 @@ const Signup = () => {
       if (resultNick.data === true) {
         // 서버로부터 받은 응답이 "true"인 경우
         setNickMessage("사용 가능한 닉네임입니다.");
-        setIsId(true); // 닉네임 유효성 검사 결과 설정 (유효함)
+        setIsNick(true); // 닉네임 유효성 검사 결과 설정 (유효함)
       } else {
         // 서버로부터 받은 응답이 "ture"가 아닌 경우
         setNickMessage("이미 사용 중인 닉네임입니다.");
-        setIsId(false); // 닉네임 유효성 검사 결과 설정 (유효하지 않음)
+        setIsNick(false); // 닉네임 유효성 검사 결과 설정 (유효하지 않음)
       }
     }
   };
@@ -262,7 +262,7 @@ const Signup = () => {
           />
         </Items>
         <Items className="hint">
-          {inputId.length > 0 && (
+          {inputNick.length > 0 && (
             <span className={`message ${isNick ? "success" : "error"}`}>
               {nickMessage}
             </span>

@@ -36,6 +36,7 @@ const AxiosApi = {
   
   // 회원 정보 수정
   memberUpd: async (id, nick, profile_img) => {
+    console.log("AxiosApi.memberUpd 입력결과 : ", id, nick, profile_img);
     // 회원 가입을 위한 함수
     const update = {
       // 회원 정보를 담은 객체를 생성 .

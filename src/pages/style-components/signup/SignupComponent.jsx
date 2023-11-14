@@ -48,14 +48,35 @@ export const Items = styled.div`
       width: 37.5rem; /* 변경: 600px / 16px = 37.5rem */
       button {
         background-color: #ff7070;
-        width: 8rem;
-        height: 3rem;
-        font-size: 1.5rem;
+        width: 7rem;
+        height: 2.3rem;
+        font-size: 1.3rem;
         font-weight: 600;
         color: white;
         border: 0rem;
-        
+        &:active {
+    background-color: #a94a4a;// 클릭 시 
+    transform: translateY(2px);}
+      };
 
+    }
+    .deleteimg {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.51rem; /* 변경: 40px / 16px = 2.5rem */
+      width: 37.5rem; /* 변경: 600px / 16px = 37.5rem */
+      button {
+        background-color: #ff7070;
+        width: 7rem;
+        height: 2.3rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: white;
+        border: 0rem;
+        &:active {
+    background-color: #a94a4a;// 클릭 시 
+    transform: translateY(2px);}
       };
 
     }
@@ -67,6 +88,7 @@ export const Items = styled.div`
       display: flex;
       justify-content: space-between;
       button{
+        width: 6rem;
         height: 2.2rem;
         background-color:#ff7070;
         color: white;

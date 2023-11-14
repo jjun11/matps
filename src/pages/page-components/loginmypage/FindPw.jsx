@@ -4,7 +4,7 @@ import {
   Input,
   Label,
   Button,
-} from "../../style-components/signup/FindIdComponent";
+} from "../../style-components/Signup/FindIdComponent";
 import { useState } from "react";
 
 const FindPw = () => {

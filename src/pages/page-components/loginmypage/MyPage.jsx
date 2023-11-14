@@ -71,7 +71,7 @@ const MyPage = () => {
         <Items className="update" onClick={onClickUpdate}>
           내 정보 수정{" "}
         </Items>
-        <Items className="present">
+        <Items className="present" onClick={() => navigate("/MyPageDetail")}>
           <div>
             저장한 맛집
             <p>0</p>

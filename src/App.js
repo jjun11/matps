@@ -26,6 +26,7 @@ import PrivacyPolicy from "./pages/page-components/signup/PrivacyPolicy";
 import TermsOfUse from "./pages/page-components/signup/TermsOfUse";
 import Update from "./pages/page-components/loginmypage/Update";
 import Login from "./pages/page-components/loginmypage/Login";
+import MyPageDetail from "./pages/page-components/loginmypage/MyPageDetail";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/TermsOfUse" element={<TermsOfUse />} />
           <Route path="/Update" element={<Update />} />
+          <Route path="/MyPageDetail" element={<MyPageDetail />} />
         </Routes>
       </Router>
     </>

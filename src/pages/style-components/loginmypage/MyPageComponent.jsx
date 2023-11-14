@@ -54,6 +54,7 @@ export const Items = styled.div`
     &:active {
     background-color: #a94a4a;// 클릭 시 
     transform: translateY(2px);}
+    
   }
   &.present {
     display: flex;
@@ -63,6 +64,16 @@ export const Items = styled.div`
     height: 7.1875rem; /* 변경: 115px / 16px = 7.1875rem */
     border-radius: 1.25rem; /* 변경: 20px / 16px = 1.25rem */
     background-color: white;
+    cursor: pointer;
+    &:hover {
+      transition: box-shadow 0.5s ease-in-out;
+      box-shadow: 0 0 2rem rgba(0, 0, 0, .2);
+    }
+    &:active {
+    box-shadow: inset 0px 1rem 0.5rem rgba(0, 0, 0, .10);
+    background-color: #eeeeee;// 클릭 시 
+    transform: translateY(2px);}
+    
     div {
         margin-top: 1.5625rem; /* 변경: 25px / 16px = 1.5625rem */
       font-size: 0.9375rem;

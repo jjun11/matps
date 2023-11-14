@@ -42,6 +42,7 @@ const Update = () => {
   const [modalOpen, setModalOpen] = useState(false); // 팝업 모달의 열림/닫힘 상태를 나타내는 상태
   const [modalText, setModelText] = useState("중복된 아이디 입니다."); // 팝업 모달에 표시될 텍스트
 
+  const [isLoading, setIsLoading] = useState(false); // 로딩 상태를 나타내는 상태 변수
   const closeModal = () => {
     setModalOpen(false); // 팝업 모달을 닫는 함수
   };
@@ -51,6 +52,7 @@ const Update = () => {
   };
 
   const handleUploadClick = () => {
+    setIsLoading(true); // 파일 업로드가 시작될 때 로딩 상태를 true로 설정
     const storageRef = storage.ref();
     const fileRef = storageRef.child(file.name);
     fileRef.put(file).then(() => {
@@ -58,6 +60,7 @@ const Update = () => {
       fileRef.getDownloadURL().then((url) => {
         console.log("저장경로 확인 : " + url);
         setUrl(url);
+        setIsLoading(false); // 파일 업로드가 끝났을 때 로딩 상태를 false로 설정
       });
     });
   };
@@ -156,6 +159,7 @@ const Update = () => {
           <Label>프로필 이미지</Label>
           <input type="file" onChange={handleFileInputChange} />
           <button onClick={handleUploadClick}>사진 적용</button>
+          {isLoading ? <div>Uploading...</div> : null}
         </Items>
         <Items className="deleteimg">
           <Label></Label>

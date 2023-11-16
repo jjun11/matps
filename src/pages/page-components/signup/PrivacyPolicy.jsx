@@ -1,8 +1,9 @@
-import { Container } from "../../style-components/Signup/AgreedComponent";
+import { Container, GlobalStyle } from "../../style-components/Signup/AgreedComponent";
 
 const PrivacyPolicy = () => {
   return (
     <>
+    <GlobalStyle/>
       <Container>
         <div>
           <h1>MAtPS 개인정보처리방침</h1>

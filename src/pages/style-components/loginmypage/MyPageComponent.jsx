@@ -82,7 +82,7 @@ export const Items = styled.div`
         text-align: center;
         font-size: 1.875rem;
         font-weight: 800;
-        margin: 0px;
+        margin-top: 0.5rem;
       }
     }
   }

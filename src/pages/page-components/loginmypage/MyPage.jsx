@@ -9,6 +9,7 @@ import AxiosApi from "../../../Api/AxiosApi";
 import Modal from "../../../utils/Modal";
 import ProfileImg from "../../../images/profileImg.png";
 import ModalUpd from "../../../utils/Modal_Upd";
+import GlobalStyle from "../../style-components/Global_style";
 
 //닉네임
 
@@ -59,6 +60,7 @@ const MyPage = () => {
 
   return (
     <>
+    <GlobalStyle/>
       <Container>
         <Items className="title">MyPage</Items>
         <Items className="prfimg rounded">

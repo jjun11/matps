@@ -9,6 +9,7 @@ import {
 } from "../../style-components/loginmypage/LoginComponent";
 import matpsSymbol from "../../../images/matpsSymbol.png";
 import Modal from "../../../utils/Modal";
+import GlobalStyle from "../../style-components/Global_style";
 
 const Login = (page) => {
   const navigate = useNavigate(); // 화면 이동용 hook
@@ -109,6 +110,7 @@ const Login = (page) => {
 
   return (
     <>
+    <GlobalStyle/>
       <Container>
         <Items className="logoCl">
           <img src={matpsSymbol} alt="Logo" style={{ width: "18.75rem" }} />{" "}

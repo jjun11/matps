@@ -4,8 +4,10 @@ import {
   Input,
   Label,
   Button,
+  GlobalStyle,
 } from "../../style-components/Signup/FindIdComponent";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const FindId = () => {
   const [inputName, setInputName] = useState("");
@@ -24,6 +26,7 @@ const FindId = () => {
 
   return (
     <>
+    <GlobalStyle/>
       <Container>
         <Items className="FindId">아이디 찾기</Items>
         <hr style={{ width: "100%" }} />
@@ -51,7 +54,9 @@ const FindId = () => {
         </Items>
         <Items className="link">
           <div>인증번호가 오지 않아요</div>
+          <Link to="/FindPw">
           <div>비밀번호 찾기</div>
+          </Link>
         </Items>
       </Container>
     </>

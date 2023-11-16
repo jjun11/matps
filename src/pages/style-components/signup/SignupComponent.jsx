@@ -1,11 +1,28 @@
-import styled, { css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+
+  @media screen { 
+    html {
+      font-size: max(3px, min(0.8vw, 10px));
+    }}
+  @media screen and (max-width : 1023px) { 
+    html {
+      font-size: max(6px, min(1.2vw, 15px));
+    }}
+  @media screen and (max-width : 767px) { 
+    html {
+      font-size: max(3px, min(2vw, 20px));
+    }}
+`;
 
 export const Container = styled.div`
-  width: 80rem; /* 변경: 1280px / 16px = 80rem */
+  width: 100vw;
+  max-width: 100vw; /* 변경: 1280px / 16px = 80rem */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
+  margin: 0 auto;
   font-family: "Noto Sans KR", sans-serif;
   .success {
     color: royalblue;
@@ -13,14 +30,24 @@ export const Container = styled.div`
   .error {
     color: red;
   }
+
+ 
 `;
 
 export const Label = styled.div`
   width: 8.75rem; /* 변경: 140px / 16px = 8.75rem */
   font-size: 1.5rem; /* 변경: 24px / 16px = 1.5rem */
+  text-align: left;
   color: #4e2619;
-  text-align: right;
 `;
+
+export const FileInput = styled.input`
+display: none;
+`;
+
+export const CustomButton = styled.button`
+`;
+
 
 export const Items = styled.div`
   &.sign {
@@ -47,8 +74,8 @@ export const Items = styled.div`
       margin-top: 2.5rem; /* 변경: 40px / 16px = 2.5rem */
       width: 37.5rem; /* 변경: 600px / 16px = 37.5rem */
       button {
-        background-color: #ff7070;
-        width: 7rem;
+        background-color: #d94d4d;
+        min-width: 7rem;
         height: 2.3rem;
         font-size: 1.3rem;
         font-weight: 600;
@@ -57,6 +84,7 @@ export const Items = styled.div`
         &:active {
     background-color: #a94a4a;// 클릭 시 
     transform: translateY(2px);}
+    
       };
 
     }
@@ -67,8 +95,8 @@ export const Items = styled.div`
       margin-top: 0.51rem; /* 변경: 40px / 16px = 2.5rem */
       width: 37.5rem; /* 변경: 600px / 16px = 37.5rem */
       button {
-        background-color: #ff7070;
-        width: 7rem;
+        background-color: gray;
+        min-width: 7rem;
         height: 2.3rem;
         font-size: 1.3rem;
         font-weight: 600;
@@ -82,7 +110,7 @@ export const Items = styled.div`
     }
   }
   &.agree {
-    margin-left: 1rem;
+    width: 40rem;
     margin-top: 2rem;
       font-size: 1.3rem;
       display: flex;
@@ -93,8 +121,8 @@ export const Items = styled.div`
         background-color:#ff7070;
         color: white;
         margin-top: 0.5rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
         font-size: 1.1rem;
         font-weight: 600;
         padding: 0.4rem;
@@ -106,7 +134,6 @@ export const Items = styled.div`
 
      span {
         text-align: center;
-        margin-left : 3rem;
         width: 6rem;
         font-weight: 400;
         font-size: 1.3rem;
@@ -159,6 +186,7 @@ margin-top: 3rem;
     background-color: #a94a4a;// 클릭 시 
     transform: translateY(2px);}
 `;
+
 
 export const RadioContainer = styled.div`
   display: flex;

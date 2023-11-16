@@ -1,4 +1,19 @@
-import styled, { css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+
+  @media screen and (max-width: 1023px) {
+    html {
+      font-size: 12px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    html {
+      min-width: 330px;
+      font-size: 8px;
+    }
+  }
+`;
 
 export const Container = styled.div`
 div.button{

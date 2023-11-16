@@ -66,6 +66,19 @@ const AxiosApi = {
     };
     return await axios.post(KH_DOMAIN + "/users/del", del); // 회원 탈퇴 API에 POST 요청
   },
-};
 
+  // 맛집 조회
+
+  // 예약내역 조회
+
+  // 리뷰 조회
+   reviewGet: async (nick) => {
+    console.log("AxiosApi.reviewGet 입력결과 : ", nick);
+    return await axios.get(KH_DOMAIN + `/users/review/?nick=${nick}`); // 리뷰 조회 API에 GET 요청
+  },
+  // 내가 쓴 글 조회
+
+  // 최근 본 맛집 조회
+
+};
 export default AxiosApi; // AxiosApi 객체를 모듈로 내보냄

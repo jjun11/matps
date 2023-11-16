@@ -10,6 +10,9 @@ import {
   RadioContainer,
   RadioInput,
   RadioLabel,
+  GlobalStyle,
+  FileInput,
+  CustomButton
 } from "../../style-components/Signup/SignupComponent"; // SignupComponent2 컴포넌트에서 필요한 요소들을 불러옴
 import { useEffect, useState } from "react"; // React의 useState 훅을 불러옴
 import matpslogo from "../../../images/matps로고.png"; // matps로고 이미지 파일을 불러옴
@@ -31,6 +34,8 @@ const Update = () => {
 
   const [file, setFile] = useState(""); // 프로필이미지 입력값을 담는 상태와 그 상태를 업데이트하는 함수
   const [url, setUrl] = useState(userInfo.my_profile_img);
+  const [fileName, setFileName] = useState(''); //파일이름 저장상태
+
 
   // 오류 메시지
   const [nickMessage, setNickMessage] = useState(""); // 닉네임 관련 오류 메시지를 표시하는 상태
@@ -49,6 +54,8 @@ const Update = () => {
 
   const handleFileInputChange = (e) => {
     setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+    console.log("파일선택 완료, 이미지명: " + e.target.files[0].name);
   };
 
   const handleUploadClick = () => {
@@ -136,6 +143,8 @@ const Update = () => {
   };
 
   return (
+    <>
+    <GlobalStyle/>
     <Container>
       <Items className="sign">회원정보 수정</Items>
       <hr style={{ width: "100%" }} /> {/*전체너비 수평선*/}
@@ -157,7 +166,11 @@ const Update = () => {
       <Items className="item2">
         <Items className="inputimg">
           <Label>프로필 이미지</Label>
-          <input type="file" onChange={handleFileInputChange} />
+          <FileInput type="file" id="file" onChange={handleFileInputChange}/>
+          <CustomButton onClick={() => document.getElementById('file').click()} style={{backgroundColor : "#d94d4d" }}>
+            파일 선택
+          </CustomButton>
+          <div>{fileName}</div>
           <button onClick={handleUploadClick}>사진 적용</button>
           {isLoading ? <div>Uploading...</div> : null}
         </Items>
@@ -225,6 +238,7 @@ const Update = () => {
         </Modal>
       </Items>
     </Container>
+    </>
   );
 };
 

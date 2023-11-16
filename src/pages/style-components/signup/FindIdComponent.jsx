@@ -1,13 +1,25 @@
-import styled, { css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
+ 
+export const GlobalStyle = createGlobalStyle`
+
+  @media screen {
+    html {
+      font-size: calc(3px + 0.6vw); /* 최소 1rem, 화면 너비에 따라 조정 */
+    }
+  }
+`;
 
 export const Container = styled.div`
-  width: 1280px;
+  width: 100%;
+  max-width: 80rem;
+  min-width: 20.625rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
   font-family: "Noto Sans KR", sans-serif;
+
 `;
 
 export const Items = styled.div`
@@ -29,6 +41,7 @@ export const Items = styled.div`
       align-items: center;
       margin-top: 0.7rem; /* 변경: 40px / 16px = 2.5rem */
       width: 62rem; /* 변경: 600px / 16px = 37.5rem */
+      
   }
 
   &.link {
@@ -40,7 +53,9 @@ export const Items = styled.div`
       color: #cccccc;
       display: flex;
       justify-content: space-between;
-      
+      div {
+      cursor: pointer;
+    }
   }
   &.5 {
     div {
@@ -62,8 +77,8 @@ export const Items = styled.div`
 `;
 
 export const Button = styled.button`
-width: 9rem;
-    height: 4.8rem;
+    min-width: 9rem;
+    min-height: 4.8rem;
     background-color: #d94d4d;
     color: white;
     border: 0px;

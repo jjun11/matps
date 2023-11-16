@@ -10,6 +10,7 @@ import {
   RadioContainer,
   RadioInput,
   RadioLabel,
+  GlobalStyle,
 } from "../../style-components/Signup/SignupComponent"; // SignupComponent2 컴포넌트에서 필요한 요소들을 불러옴
 import { useEffect, useState } from "react"; // React의 useState 훅을 불러옴
 import matpslogo from "../../../images/matps로고.png"; // matps로고 이미지 파일을 불러옴
@@ -648,6 +649,8 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <GlobalStyle/>
     <Container>
       <Items className="sign">회원가입</Items>
       <hr style={{ width: "100%" }} /> {/*전체너비 수평선*/}
@@ -837,6 +840,7 @@ const Signup = () => {
         </Modal>
       </Items>
     </Container>
+    </>
   );
 };
 

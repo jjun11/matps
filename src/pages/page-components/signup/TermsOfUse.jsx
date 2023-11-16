@@ -1,9 +1,10 @@
 import { Link, Route, useNavigate } from "react-router-dom";
-import { Container } from "../../style-components/Signup/AgreedComponent";
+import { Container, GlobalStyle } from "../../style-components/Signup/AgreedComponent";
 
 const TermsOfUse = () => {
   return (
     <>
+    <GlobalStyle/>
       <Container>
         <h1>MAtPS 이용약관</h1>
         <br />
